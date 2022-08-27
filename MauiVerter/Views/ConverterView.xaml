@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiVerter.Views.ConverterView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="{Binding QuantityName}">
+
+    <Grid RowDefinitions="*,*">
+        <Grid Grid.Row="0" BackgroundColor="{StaticResource AppColor1}">
+            <VerticalStackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                <Entry
+                    FontSize="100"
+                    HorizontalTextAlignment="Center"
+                    Keyboard="Numeric"
+                    ReturnCommand="{Binding ReturnCommand}"
+                    Text="{Binding FromValue, Mode=TwoWay}"
+                    TextColor="{StaticResource TextColor}" />
+                <Picker
+                    HorizontalTextAlignment="Center"
+                    ItemsSource="{Binding FromMeasures}"
+                    SelectedItem="{Binding CurrentFromMeasures, Mode=TwoWay}"
+                    TextColor="{StaticResource TextColor}" />
+            </VerticalStackLayout>
+        </Grid>
+        <Grid Grid.Row="1" BackgroundColor="{StaticResource AppColor3}">
+            <VerticalStackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                <Label
+                    FontSize="100"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding ToValue, StringFormat='{0:0.##}', Mode=OneWay}"
+                    TextColor="{StaticResource TextColor}" />
+                <Picker
+                    HorizontalTextAlignment="Center"
+                    ItemsSource="{Binding ToMeasures}"
+                    SelectedItem="{Binding CurrenToMeasures, Mode=TwoWay}"
+                    TextColor="{StaticResource TextColor}" />
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>
